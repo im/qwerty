@@ -9,8 +9,6 @@ jobs:
         steps:
             - name: 1. Checkout
               uses: actions/checkout@master
-            - name: Submodule Checkout
-              uses: jwsi/submodule-checkout@v1
 
             - name: 2. setup nodejs...
 
