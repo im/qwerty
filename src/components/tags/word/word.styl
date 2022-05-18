@@ -1,0 +1,57 @@
+/**
+ * Word
+ * @author tangxiaomi <81195314@qq.com>
+ * @date 2022-05-16 16:02:44
+ * @since 0.1.0
+ */
+.words
+    display flex
+    text-align center
+    justify-content center
+    font-weight bold
+    margin-bottom 30px
+    position relative
+    li
+        font-size 28px
+        font-size 30px
+        margin 0 3px
+        padding-bottom 5px
+        line-height 28px
+        border-bottom 2px solid #2c3e50
+        width 20px
+        &.hide
+            span
+                color transparent
+        &.sound
+            position relative
+            border 0
+            padding-left 10px
+        &.blank
+            border-bottom 2px solid transparent !important
+            color #ada3a3
+            position relative
+            span
+                position absolute
+                left 2px
+                bottom 0px
+        &.success
+            color #67C23A
+            border-bottom 2px solid #67C23A
+        &.error
+            color #F56C6C
+            border-bottom 2px solid #F56C6C
+.phonetic
+    margin-bottom 10px
+.wrong
+    animation shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both
+@keyframes shake
+    10%, 90%
+        transform translate3d(-1px, 0, 0)
+    20%, 80%
+        transform translate3d(2px, 0, 0)
+    30%, 50%, 70%
+        transform translate3d(-4px, 0, 0)
+    40%, 60%
+        transform translate3d(4px, 0, 0)
+.word-box
+    text-align center

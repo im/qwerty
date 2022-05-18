@@ -1,0 +1,36 @@
+name: deploy github pages
+on:
+    push:
+        branches:
+            - master
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: 1. Checkout
+              uses: actions/checkout@master
+            - name: Submodule Checkout
+              uses: jwsi/submodule-checkout@v1
+
+            - name: 2. setup nodejs...
+
+              uses: actions/setup-node@v2
+              with:
+                node-version: '16'
+
+            - name: 3. install yarn..
+              run: |
+                  npm install yarn -g
+                  yarn
+
+            - name: 4. build page..
+              run: |
+                  yarn build
+                  ls
+
+            - name: 5. deploy github pages
+              uses: JamesIves/github-pages-deploy-action@3.7.1
+              with:
+                  ACCESS_TOKEN: ${{ secrets.PAGES_TOKEN }}
+                  BRANCH: gh-pages
+                  FOLDER: dist

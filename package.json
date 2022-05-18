@@ -1,0 +1,43 @@
+{
+    "name": "qwerty",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "cli": "node ./src/tools/cli.js",
+        "lint": "eslint -c .eslintrc.js src/**/*.vue src/**/*.js src/**/*.ts",
+        "fix": "eslint -c .eslintrc.js src/**/*.vue src/**/*.js src/**/*.ts --fix"
+    },
+    "dependencies": {
+        "@vueuse/sound": "^1.1.7",
+        "babel-plugin-component": "^1.1.1",
+        "core-js": "^3.6.5",
+        "element-ui": "^2.15.8",
+        "vue": "^2.6.11",
+        "vue-class-component": "^7.2.3",
+        "vue-property-decorator": "^9.1.2",
+        "vue-router": "^3.2.0",
+        "vuex": "^3.4.0"
+    },
+    "devDependencies": {
+        "@tangxiaomi/eslint-config": "^0.0.3",
+        "@vue/cli-plugin-babel": "~4.5.0",
+        "@vue/cli-plugin-router": "~4.5.0",
+        "@vue/cli-plugin-typescript": "~4.5.0",
+        "@vue/cli-plugin-vuex": "~4.5.0",
+        "@vue/cli-service": "~4.5.0",
+        "colors": "^1.4.0",
+        "moment": "^2.29.1",
+        "prompt": "^1.2.0",
+        "stylus": "^0.54.7",
+        "stylus-loader": "^3.0.2",
+        "typescript": "~4.1.5",
+        "vue-template-compiler": "^2.6.11"
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead"
+    ]
+}

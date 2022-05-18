@@ -1,0 +1,50 @@
+/**
+ * Write
+ * @author tangxiaomi <81195314@qq.com>
+ * @date 2022-05-16 16:03:38
+ * @since 0.1.0
+ */
+.select
+    font-weight bold
+    height 30px
+    outline none
+    border 0
+    border-radius 3px
+    background transparent
+    margin-right 10px
+    &.y
+        color #67C23A
+    &.w100
+        width 100px
+.dict
+    font-weight bold
+    position fixed
+    right 0
+    bottom 0
+.foot-bar
+    position fixed
+    left 0
+    bottom 0
+    display flex
+    align-items center
+    .iconfont
+        cursor pointer
+        font-size 18px
+        margin-left 10px
+        transition 0.6s
+        &:hover
+            transform rotate(180deg)
+    .bar
+        transition 0.6s
+        width 0px
+        overflow hidden
+        display flex
+        align-items center
+    &.open
+        .bar
+            width 100%
+.write-box
+    display flex
+    justify-content center
+    align-items center
+    height 100%
