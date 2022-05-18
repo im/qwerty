@@ -78,11 +78,9 @@ export default class Word extends Vue {
 
     @Watch('value')
     changVal () {
-
         if (this.word.name === this.value) {
             this.handleSuccess()
         }
-
         if (!this.checkResult) {
             this.handleError()
         }

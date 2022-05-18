@@ -6,14 +6,22 @@
 -->
 
 <template>
-    <div class="write-box">
-        <Word
-            v-if="word"
-            v-model="value"
-            :word="word"
-            :config="config"
-            @error="error"
-            @success="success"></Word>
+    <div
+        class="write-box"
+        :class="{ start: !action }">
+        <div>
+            <Word
+                v-if="word"
+                v-model="value"
+                :word="word"
+                :config="config"
+                @error="error"
+                @success="success"></Word>
+            <Result
+                :time="curTime"
+                :inputCount="inputCount"
+                :correctCount="correctCount"></Result>
+        </div>
         <div
             v-if="dict && dict.name"
             class="dict"> {{ dict.name }} ({{ dict.length }})</div>
@@ -102,19 +110,22 @@
 <script lang="ts">
 import { Component, Prop, Vue,Watch } from 'vue-property-decorator'
 import Word from 'components/tags/word/word.vue'
+import Result from 'components/tags/result/result.vue'
 import { playSound, wordPlaySound } from '@/utils/sounds'
 import { storage } from '@/utils'
 import context from '@/context'
 
 @Component({
     components: {
-        Word
+        Word,
+        Result
     }
 })
 
 export default class Write extends Vue {
 
     @Prop() dict: any
+    @Prop() action: any
 
     list = []
 
@@ -126,6 +137,12 @@ export default class Write extends Vue {
     beepAudio:any = null
 
     isShowFootBar = false
+    startNow = 0
+    startTimer:any = null
+    curTime = 0
+    recordTime = 0
+    inputCount = 0
+    correctCount = 0
 
     config = {
         showWord: 'y',
@@ -147,6 +164,31 @@ export default class Write extends Vue {
     })
     changeConfig () {
         storage.set('qwertyConfig', JSON.stringify(this.config))
+    }
+
+    @Watch('action', {
+        immediate: true,
+        deep: true
+    })
+    changeAction () {
+        if (!this.action) {
+            this.startNow = Date.now()
+            this.recordTime = this.curTime
+            this.startTimeWatch()
+        } else {
+            this.stopTimeWatch()
+        }
+    }
+
+    startTimeWatch () {
+        this.startTimer = setInterval(() => {
+            const curTime = Date.now()
+            this.curTime = (curTime - this.startNow) + this.recordTime
+        }, 1000)
+    }
+
+    stopTimeWatch () {
+        clearInterval(this.startTimer)
     }
 
     get pageSize () {
@@ -240,6 +282,7 @@ export default class Write extends Vue {
         if (char === ' ') {
             e.preventDefault()
             this.value = this.value + ' '
+            this.inputCount++
         }
 
         if (this.isChineseSymbol(char)) {
@@ -248,8 +291,10 @@ export default class Write extends Vue {
 
         if (this.isLegal(char) && !e.altKey && !e.ctrlKey && !e.metaKey) {
             this.value = this.value + char
+            this.inputCount++
         } else if (char === 'Backspace') {
             this.value = this.value.substr(0, this.value.length - 1)
+            this.inputCount++
         }
     }
 
@@ -271,6 +316,7 @@ export default class Write extends Vue {
         } else {
             this.beepAudio.play()
         }
+        this.correctCount = this.correctCount + word.length
     }
 
     error () {
@@ -278,11 +324,12 @@ export default class Write extends Vue {
     }
 
     async mounted () {
-        console.log('storage. ', storage.get('qwertyConfig'))
         if (storage.get('qwertyConfig')) {
             this.config = storage.get('qwertyConfig')
         }
-        this.getData()
+        if (this.dictId) {
+            this.getData()
+        }
         this.clickAudio = playSound('click')
         this.hintAudio = playSound('hint')
         this.beepAudio = playSound('beep')

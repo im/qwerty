@@ -8,23 +8,18 @@
             v-else
             class="bg"></div>
         <div
-            v-if="isStart"
-            class="home">
-            <div
-                class="start">
-                <div
-                    class="btn"
-                    @click="isStart = false">START</div>
-            </div>
-        </div>
+            class="start-btn"
+            :class="{ start: !isStart }"
+            @click="isStart = !isStart">{{ isStart ? 'START' : 'PAUSE' }}</div>
 
         <Dict
             v-if="!isStart"
             @change="setDict"></Dict>
 
         <Write
-            v-if="dict.id && !isStart"
-            :dict="dict"></Write>
+            v-if="dict.id"
+            :dict="dict"
+            :action="isStart"></Write>
 
     </div>
 </template>
@@ -92,26 +87,28 @@ export default class App extends Vue {
         background #ccc
         z-index -1
         object-fit cover
-    .home
-        width 100%
-        height 100%
-        .start
-            width 100%
-            height 100%
-            display flex
-            align-items center
-            justify-content center
-            .btn
-                width 200px
-                color #2c3e50
-                background rgba(255, 255, 255, 0.7)
-                text-align center
-                line-height 50px
-                font-weight bold
-                transition 0.3s
-                cursor pointer
-                border-radius 4px
-                &:hover
-                    opacity 0.8
+
+    .start-btn
+        width 200px
+        color #2c3e50
+        background rgba(255, 255, 255, 0.7)
+        text-align center
+        line-height 50px
+        font-weight bold
+        transition 0.3s
+        cursor pointer
+        border-radius 4px
+        position absolute
+        right calc(50% - 100px)
+        top calc(50% - 25px)
+        transition 0.8s
+        z-index 1
+        &.start
+            background #eb722c
+            color #fff
+            right 10px
+            top 10px
+        &:hover
+            opacity 0.8
 
 </style>
