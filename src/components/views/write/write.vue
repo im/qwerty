@@ -18,6 +18,7 @@
                 @error="error"
                 @success="success"></Word>
             <Result
+                v-if="config.panel === 'y'"
                 :time="curTime"
                 :inputCount="inputCount"
                 :correctCount="correctCount"></Result>
@@ -88,6 +89,12 @@
                     <option value="uk">英音[V]</option>
                 </select>
                 <select
+                    v-model="config.panel"
+                    class="select">
+                    <option value="y">面板显示[E]</option>
+                    <option value="n">面板隐藏[E]</option>
+                </select>
+                <select
                     v-model="config.pageSize"
                     class="select"
                     @change="index = 0">
@@ -151,7 +158,8 @@ export default class Write extends Vue {
         phonetic: 'y',
         sound: 'n',
         voice: 'us',
-        pageSize: 20
+        pageSize: 20,
+        panel: 'n'
     }
 
     @Watch('dictId')
@@ -262,6 +270,10 @@ export default class Write extends Vue {
                     break
                 case 'v':
                     this.config.voice = this.config.voice === 'us' ? 'uk' : 'us'
+                    this.eventStop(e)
+                    break
+                case 'e':
+                    this.config.panel = this.config.panel === 'y' ? 'n' : 'y'
                     this.eventStop(e)
                     break
                 default:

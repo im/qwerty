@@ -62,6 +62,12 @@ export default class App extends Vue {
             this.setDict(dict)
         }
         document.title = 'Qwery'
+
+        window.addEventListener('keydown', ({ code }) => {
+            if (code === 'Enter') {
+                this.isStart = !this.isStart
+            }
+        })
     }
 }
 </script>
@@ -102,12 +108,18 @@ export default class App extends Vue {
         right calc(50% - 100px)
         top calc(50% - 25px)
         transition 0.8s
+        font-size 30px
         z-index 1
         &.start
             background #eb722c
             color #fff
             right 10px
             top 10px
+            width 100px
+            height 100px
+            text-align center
+            line-height 100px
+            border-radius 50%
         &:hover
             opacity 0.8
 
