@@ -4,7 +4,7 @@ const resolve = (dir) => {
 }
 module.exports = {
     lintOnSave: false,
-    publicPath: '',
+    publicPath: '/qwerty/',
     css: {},
     devServer: {},
     chainWebpack: (config) => {
