@@ -104,6 +104,7 @@ import { Component, Prop, Vue,Watch } from 'vue-property-decorator'
 import Word from 'components/tags/word/word.vue'
 import { playSound, wordPlaySound } from '@/utils/sounds'
 import { storage } from '@/utils'
+import context from '@/context'
 
 @Component({
     components: {
@@ -172,7 +173,7 @@ export default class Write extends Vue {
     }
 
     async getData () {
-        this.list = await fetch(`/dicts/${this.dictId}.json`).then(res => res.json())
+        this.list = await fetch(`${context}dicts/${this.dictId}.json`).then(res => res.json())
         this.index = 0
     }
 

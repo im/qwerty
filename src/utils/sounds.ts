@@ -1,6 +1,7 @@
+import context from '@/context'
 const pronunciationApi = 'https://dict.youdao.com/dictvoice?audio='
 export const playSound = (type: 'beep' | 'click' | 'hint') => {
-    const url = `/sound/${type}.wav`
+    const url = `${context}sound/${type}.wav`
     const audio = new Audio(url)
     return audio
 }
