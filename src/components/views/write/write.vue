@@ -323,11 +323,12 @@ export default class Write extends Vue {
 
     success (word:string) {
         this.next()
+        this.beepAudio.play()
+
         if (this.config.sound === 'y') {
             wordPlaySound(word, this.config.voice).play()
-        } else {
-            this.beepAudio.play()
         }
+
         this.correctCount = this.correctCount + word.length
     }
 
