@@ -4,7 +4,7 @@ import { getLastCommit } from 'git-last-commit'
 import jotaiDebugLabel from 'jotai/babel/plugin-debug-label'
 import jotaiReactRefresh from 'jotai/babel/plugin-react-refresh'
 import path from 'node:path'
-import { visualizer } from 'rollup-plugin-visualizer'
+// import { visualizer } from 'rollup-plugin-visualizer'
 import Icons from 'unplugin-icons/vite'
 import { defineConfig } from 'vite'
 import type { PluginOption } from 'vite'
@@ -17,7 +17,7 @@ export default defineConfig(async ({ mode }) => {
   return {
     plugins: [
       react({ babel: { plugins: [jotaiDebugLabel, jotaiReactRefresh] } }),
-      visualizer() as PluginOption,
+      // visualizer() as PluginOption,
       Icons({
         compiler: 'jsx',
         jsx: 'react',

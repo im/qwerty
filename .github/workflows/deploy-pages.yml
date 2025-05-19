@@ -22,7 +22,7 @@ jobs:
         with:
             version: 8  
       - name: Install Packages
-        run: pnpm
+        run: pnpm install
       - name: Build page
         run: pnpm build
       - name: Deploy to gh-pages
