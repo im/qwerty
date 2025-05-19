@@ -1,8 +1,8 @@
-name: Deployment to Github/Gitee pages
+name: Deployment to Github
 on:
   push:
     branches:
-      - master
+      - main
 env:
   REACT_APP_DEPLOY_ENV: pages
 jobs:
@@ -10,26 +10,23 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.17.0]
+        node-version: [18.16.1]
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+            version: 8  
       - name: Install Packages
-        run: yarn
+        run: pnpm
       - name: Build page
-        run: yarn build
+        run: pnpm build
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_dir: ./build
-      - name: Sync to Gitee
-        uses: wearerequired/git-mirror-action@master
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.GITEE }}
-        with:
-          source-repo: git@github.com:Kaiyiwing/qwerty-learner.git
-          destination-repo: git@gitee.com:KaiyiWing/qwerty-learner.git

@@ -2,6 +2,7 @@
   "name": "qwerty-learner",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "homepage": ".",
   "dependencies": {
     "@floating-ui/react": "^0.20.1",
@@ -62,9 +63,7 @@
     "build": "cross-env CI=false vite build --base=./",
     "test": "echo \"No tests\"",
     "test:e2e": "playwright test",
-    "lint": "eslint .",
-    "prettier": "prettier --write .",
-    "prepare": "husky install"
+    "prettier": "prettier --write ."
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
@@ -111,8 +110,6 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "git-last-commit": "^1.0.1",
-    "husky": "^8.0.0",
-    "lint-staged": "^13.1.2",
     "postcss": "^8.4.21",
     "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.2.7",
