@@ -15,7 +15,7 @@ export default defineConfig(async ({ mode }) => {
     return getLastCommit((err, commit) => (err ? 'unknown' : resolve(commit.shortHash)))
   })
   return {
-    base: 'qwerty',
+    base: '/qwerty/',
     plugins: [
       react({ babel: { plugins: [jotaiDebugLabel, jotaiReactRefresh] } }),
       // visualizer() as PluginOption,
