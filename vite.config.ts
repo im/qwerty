@@ -34,9 +34,9 @@ export default defineConfig(async ({ mode }) => {
       outDir: 'build',
       sourcemap: false,
     },
-    esbuild: {
-      drop: mode === 'development' ? [] : ['console', 'debugger'],
-    },
+    // esbuild: {
+    //   drop: mode === 'development' ? [] : ['console', 'debugger'],
+    // },
     define: {
       REACT_APP_DEPLOY_ENV: JSON.stringify(process.env.REACT_APP_DEPLOY_ENV),
       LATEST_COMMIT_HASH: JSON.stringify(latestCommitHash + (process.env.NODE_ENV === 'production' ? '' : ' (dev)')),
