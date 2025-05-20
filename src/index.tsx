@@ -74,7 +74,7 @@ function Root() {
 }
 
 const container = document.getElementById('root')
-console.log('container: ', container);
+console.log('container: ', container, Root());
 
 container && createRoot(container).render(<Root />)
 console.log('container: ', container);
