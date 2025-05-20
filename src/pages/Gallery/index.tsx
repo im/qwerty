@@ -1,33 +1,36 @@
-import ChapterGroup from './ChapterGroup'
-import DictionaryGroup from './DictionaryGroup'
-import Header from '@/components/Header'
-import Layout from '@/components/Layout'
-import Tooltip from '@/components/Tooltip'
-import { dictionaries } from '@/resources/dictionary'
-import { currentDictInfoAtom } from '@/store'
-import groupBy from '@/utils/groupBy'
-import { useAtomValue } from 'jotai'
-import type React from 'react'
-import { useHotkeys } from 'react-hotkeys-hook'
-import { NavLink, useNavigate } from 'react-router-dom'
+import ChapterGroup from "./ChapterGroup";
+import DictionaryGroup from "./DictionaryGroup";
+import Header from "@/components/Header";
+import Layout from "@/components/Layout";
+import Tooltip from "@/components/Tooltip";
+import { dictionaries } from "@/resources/dictionary";
+import { currentDictInfoAtom } from "@/store";
+import groupBy from "@/utils/groupBy";
+import { useAtomValue } from "jotai";
+import type React from "react";
+import { useHotkeys } from "react-hotkeys-hook";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const GalleryPage: React.FC = () => {
-  const currentDictInfo = useAtomValue(currentDictInfoAtom)
-  const groups = Object.entries(groupBy(dictionaries, (dict) => dict.category))
-  const navigate = useNavigate()
+  const currentDictInfo = useAtomValue(currentDictInfoAtom);
+  const groups = Object.entries(groupBy(dictionaries, (dict) => dict.category));
+  const navigate = useNavigate();
   useHotkeys(
-    'enter,esc',
+    "enter,esc",
     () => {
-      navigate('/')
+      navigate("/");
     },
-    { preventDefault: true },
-  )
+    { preventDefault: true }
+  );
 
   return (
     <Layout>
       <Header>
         <Tooltip content="快捷键 Enter or Esc">
-          <NavLink className="rounded-lg bg-indigo-400 px-6 py-1 text-lg text-white focus:outline-none dark:text-opacity-80" to="/">
+          <NavLink
+            className="rounded-lg bg-indigo-400 px-6 py-1 text-lg text-white focus:outline-none dark:text-opacity-80"
+            to="/"
+          >
             完成选择
           </NavLink>
         </Tooltip>
@@ -53,9 +56,9 @@ const GalleryPage: React.FC = () => {
         </div>
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-GalleryPage.displayName = 'GalleryPage'
+GalleryPage.displayName = "GalleryPage";
 
-export default GalleryPage
+export default GalleryPage;

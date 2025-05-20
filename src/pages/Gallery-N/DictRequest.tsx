@@ -1,17 +1,17 @@
-import InfoPanel from '@/components/InfoPanel'
-import { useCallback, useState } from 'react'
-import IconBook2 from '~icons/tabler/book-2'
+import InfoPanel from "@/components/InfoPanel";
+import { useCallback, useState } from "react";
+import IconBook2 from "~icons/tabler/book-2";
 
 export default function DictRequest() {
-  const [showPanel, setShowPanel] = useState(false)
+  const [showPanel, setShowPanel] = useState(false);
 
   const onOpenPanel = useCallback(() => {
-    setShowPanel(true)
-  }, [])
+    setShowPanel(true);
+  }, []);
 
   const onClosePanel = useCallback(() => {
-    setShowPanel(false)
-  }, [])
+    setShowPanel(false);
+  }, []);
 
   return (
     <>
@@ -37,8 +37,12 @@ export default function DictRequest() {
             ，给项目贡献新的词典。
             <br />
             <br />
-            如果您没有相关的编程基础，可以将您的字典需求发送邮件到{' '}
-            <a href="mailto:me@kaiyi.cool" className="px-2 text-blue-500" aria-label="发送邮件到 me@kaiyi.cool">
+            如果您没有相关的编程基础，可以将您的字典需求发送邮件到{" "}
+            <a
+              href="mailto:me@kaiyi.cool"
+              className="px-2 text-blue-500"
+              aria-label="发送邮件到 me@kaiyi.cool"
+            >
               me@kaiyi.cool
             </a>
             ，或者在网页底部添加我们的用户社群进行反馈。
@@ -46,9 +50,12 @@ export default function DictRequest() {
           <br />
         </InfoPanel>
       )}
-      <button className="cursor-pointer pr-6 text-sm text-indigo-500" onClick={onOpenPanel}>
+      <button
+        className="cursor-pointer pr-6 text-sm text-indigo-500"
+        onClick={onOpenPanel}
+      >
         没有找到想要的词典？
       </button>
     </>
-  )
+  );
 }

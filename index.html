@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
 
-    <title></title>
+    <title> </title>
     <meta
       name="description"
       content="Qwerty Learner, 为键盘工作者设计的单词记忆与英语肌肉记忆锻炼软件 / Words learning and English muscle memory training software designed for keyboard workers"
@@ -23,10 +23,11 @@
     <script>
       // Dark mode init
       if (
-        ('state' in localStorage && JSON.parse(localStorage.state).darkMode) ||
-        (!('state' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ("state" in localStorage && JSON.parse(localStorage.state).darkMode) ||
+        (!("state" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
       ) {
-        document.documentElement.classList.add('dark')
+        document.documentElement.classList.add("dark");
       }
     </script>
   </head>

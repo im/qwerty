@@ -1,7 +1,7 @@
-import logo from '@/assets/logo.svg'
-import type { PropsWithChildren } from 'react'
-import type React from 'react'
-import { NavLink } from 'react-router-dom'
+import logo from "@/assets/logo.svg";
+import type { PropsWithChildren } from "react";
+import type React from "react";
+import { NavLink } from "react-router-dom";
 
 const Header: React.FC<PropsWithChildren> = ({ children }) => {
   return (
@@ -20,7 +20,7 @@ const Header: React.FC<PropsWithChildren> = ({ children }) => {
         </nav>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
