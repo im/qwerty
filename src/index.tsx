@@ -50,7 +50,7 @@ function Root() {
 
   return (
     <React.StrictMode>
-      <BrowserRouter basename={REACT_APP_DEPLOY_ENV === 'pages' ? '/qwerty-learner' : ''}>
+      <BrowserRouter basename='/qwerty'>
         <Suspense fallback={<Loading />}>
           <Routes>
             {isMobile ? (
@@ -74,7 +74,5 @@ function Root() {
 }
 
 const container = document.getElementById('root')
-console.log('container: ', container, Root());
 
 container && createRoot(container).render(<Root />)
-console.log('container: ', container);
