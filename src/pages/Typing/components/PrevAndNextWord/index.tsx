@@ -20,8 +20,8 @@ export default function PrevAndNextWord({ type }: LastAndNextWordProps) {
   const shortCutKey = useMemo(
     () =>
       type === "prev"
-        ? `${CTRL} + Shift + ArrowLeft`
-        : `${CTRL} + Shift + ArrowRight`,
+        ? `ArrowLeft`
+        : `ArrowRight`,
     [type]
   );
   const currentLanguage = useAtomValue(currentDictInfoAtom).language;
@@ -64,16 +64,14 @@ export default function PrevAndNextWord({ type }: LastAndNextWordProps) {
             )}
 
             <div
-              className={`grow-1 flex w-full flex-col ${
-                type === "next" ? "items-end text-right" : ""
-              }`}
+              className={`grow-1 flex w-full flex-col ${type === "next" ? "items-end text-right" : ""
+                }`}
             >
               <p
-                className={`font-mono text-2xl font-normal text-gray-700 dark:text-gray-400 ${
-                  !wordDictationConfig.isOpen
+                className={`font-mono text-2xl font-normal text-gray-700 dark:text-gray-400 ${!wordDictationConfig.isOpen
                     ? "tracking-normal"
                     : "tracking-wider"
-                }`}
+                  }`}
               >
                 {headWord}
               </p>

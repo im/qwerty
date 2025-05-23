@@ -3,6 +3,7 @@ import {
   currentChapterAtom,
   currentDictInfoAtom,
   reviewModeInfoAtom,
+  remembersAtom
 } from "@/store";
 import type { Word, WordWithIndex } from "@/typings/index";
 import { wordListFetcher } from "@/utils/wordListFetcher";
@@ -21,6 +22,7 @@ export type UseWordListResult = {
  */
 export function useWordList(): UseWordListResult {
   const currentDictInfo = useAtomValue(currentDictInfoAtom);
+  const remembers = useAtomValue(remembersAtom);
   const [currentChapter, setCurrentChapter] = useAtom(currentChapterAtom);
   const { isReviewMode, reviewRecord } = useAtomValue(reviewModeInfoAtom);
 
@@ -36,7 +38,6 @@ export function useWordList(): UseWordListResult {
     error,
     isLoading,
   } = useSWR(currentDictInfo.url, wordListFetcher);
-
   const words: WordWithIndex[] = useMemo(() => {
     let newWords: Word[];
     if (isFirstChapter) {
@@ -50,6 +51,11 @@ export function useWordList(): UseWordListResult {
       );
     } else {
       newWords = [];
+    }
+
+    newWords = newWords.filter(v => !remembers.find((item) => item.name === v.name))
+    if (!newWords.length) {
+      newWords = firstChapter;
     }
 
     // 记录原始 index, 并对 word.trans 做兜底处理

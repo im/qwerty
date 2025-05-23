@@ -17,10 +17,10 @@ export type LanguageTabOption = {
 
 const options: LanguageTabOption[] = [
   { id: "en", name: "英语", flag: enFlag },
-  { id: "ja", name: "日语", flag: jpFlag },
-  { id: "de", name: "德语", flag: deFlag },
-  { id: "kk", name: "哈萨克语", flag: kkFlag },
-  { id: "id", name: "印尼语", flag: idFlag },
+  // { id: "ja", name: "日语", flag: jpFlag },
+  // { id: "de", name: "德语", flag: deFlag },
+  // { id: "kk", name: "哈萨克语", flag: kkFlag },
+  // { id: "id", name: "印尼语", flag: idFlag },
   { id: "code", name: "Code", flag: codeFlag },
 ];
 
@@ -48,9 +48,8 @@ export function LanguageTabSwitcher() {
           >
             {({ checked }) => (
               <div
-                className={`flex items-center border-b-2 px-2 pb-1 ${
-                  checked ? "border-indigo-500" : "border-transparent"
-                }`}
+                className={`flex items-center border-b-2 px-2 pb-1 ${checked ? "border-indigo-500" : "border-transparent"
+                  }`}
               >
                 <img src={option.flag} className="mr-1.5 h-7 w-7" />
                 <p

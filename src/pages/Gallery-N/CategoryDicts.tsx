@@ -15,6 +15,7 @@ export default function DictionaryGroup({
     () => Object.keys(groupedDictsByTag),
     [groupedDictsByTag]
   );
+
   const [currentTag, setCurrentTag] = useState(
     tagList.length > 0 ? tagList[0] : ""
   );

@@ -18,11 +18,13 @@ import type {
   PronunciationType,
   WordDictationOpenBy,
   WordDictationType,
+  WordWithIndex
 } from "@/typings";
 import type { ReviewRecord } from "@/utils/db/record";
 import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 
+export const remembersAtom = atomWithStorage<Array<WordWithIndex>>("remembers", []);
 export const currentDictIdAtom = atomWithStorage("currentDict", "cet4");
 export const currentDictInfoAtom = atom<Dictionary>((get) => {
   const id = get(currentDictIdAtom);

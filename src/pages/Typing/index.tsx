@@ -6,6 +6,7 @@ import Speed from "./components/Speed";
 import StartButton from "./components/StartButton";
 import Switcher from "./components/Switcher";
 import WordList from "./components/WordList";
+import RememberList from "./components/rememberList";
 import WordPanel from "./components/WordPanel";
 import { useConfetti } from "./hooks/useConfetti";
 import { useWordList } from "./hooks/useWordList";
@@ -103,7 +104,8 @@ const App: React.FC = () => {
           (isLegal(e.key) || e.key === " ") &&
           !e.altKey &&
           !e.ctrlKey &&
-          !e.metaKey
+          !e.metaKey &&
+          e.code !== 'Backquote'
         ) {
           e.preventDefault();
           dispatch({
@@ -169,11 +171,10 @@ const App: React.FC = () => {
           <StartButton isLoading={isLoading} />
           <Tooltip content="跳过该词">
             <button
-              className={`${
-                state.isShowSkip
-                  ? "bg-orange-400"
-                  : "invisible w-0 bg-gray-300 px-0 opacity-0"
-              } my-btn-primary transition-all duration-300 `}
+              className={`${state.isShowSkip
+                ? "bg-orange-400"
+                : "invisible w-0 bg-gray-300 px-0 opacity-0"
+                } my-btn-primary transition-all duration-300 `}
               onClick={skipWord}
             >
               Skip
@@ -199,6 +200,7 @@ const App: React.FC = () => {
         </div>
       </Layout>
       <WordList />
+      <RememberList />
     </TypingContext.Provider>
   );
 };

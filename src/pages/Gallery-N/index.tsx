@@ -95,7 +95,7 @@ export default function GalleryPage() {
                       />
                     ))}
                   </div>
-                  <div className="flex items-center justify-center pb-10 pt-[20rem] text-gray-500">
+                  {/* <div className="flex items-center justify-center pb-10 pt-[20rem] text-gray-500">
                     <IconInfo className="mr-1 h-5 w-5" />
                     <p className="mr-5 w-10/12 text-xs">
                       本项目的词典数据来自多个开源项目以及社区贡献者的无偿提供。我们深感感激并尊重每一位贡献者的知识产权。
@@ -103,7 +103,7 @@ export default function GalleryPage() {
                       同时，我们也鼓励所有使用这些数据的人尊重版权所有者的权利，并且在使用这些数据时遵守所有相关的法律和规定。
                       请注意，虽然我们尽力确保所有数据的合法性和准确性，但我们不能对任何数据的准确性、完整性、合法性或可靠性做出任何保证。使用这些数据的风险完全由用户自己承担。
                     </p>
-                  </div>
+                  </div> */}
                 </ScrollArea.Viewport>
                 <ScrollArea.Scrollbar
                   className="flex touch-none select-none bg-transparent "

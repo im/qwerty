@@ -335,17 +335,15 @@ export default function WordComponent({
           <Notation notation={word.notation} />
         )}
         <div
-          className={`tooltip-info relative w-fit bg-transparent p-0 leading-normal shadow-none dark:bg-transparent ${
-            wordDictationConfig.isOpen ? "tooltip" : ""
-          }`}
+          className={`tooltip-info relative w-fit bg-transparent p-0 leading-normal shadow-none dark:bg-transparent ${wordDictationConfig.isOpen ? "tooltip" : ""
+            }`}
           data-tip="按 Tab 快捷键显示完整单词"
         >
           <div
             onMouseEnter={() => handleHoverWord(true)}
             onMouseLeave={() => handleHoverWord(false)}
-            className={`flex items-center ${
-              isTextSelectable && "select-all"
-            } justify-center ${wordState.hasWrong ? style.wrong : ""}`}
+            className={`flex items-center ${isTextSelectable && "select-all"
+              } justify-center ${wordState.hasWrong ? style.wrong : ""}`}
           >
             {wordState.displayWord.split("").map((t, index) => {
               return (
