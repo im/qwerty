@@ -54,6 +54,14 @@ export function useWordList(): UseWordListResult {
     }
 
     newWords = newWords.filter(v => !remembers.find((item) => item.name === v.name))
+    newWords = newWords.map(v => {
+      return {
+        ...v,
+        name: v.name.replace('.', ' ').replace('()', ''),
+      }
+    })
+
+    console.log(newWords)
     if (!newWords.length) {
       newWords = firstChapter;
     }

@@ -32,7 +32,7 @@ const Letter: React.FC<LetterProps> = ({
   const fontSizeConfig = useAtomValue(fontSizeConfigAtom);
   return (
     <span
-      className={`m-0 p-0 font-mono font-normal ${stateClassNameMap[(letter === EXPLICIT_SPACE) as unknown as string][
+      className={`m-0 p-0 font-bold font-mono  ${stateClassNameMap[(letter === EXPLICIT_SPACE) as unknown as string][
         state
       ]
         } pr-0.8 duration-0 dark:text-opacity-80`}
