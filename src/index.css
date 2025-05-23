@@ -6,7 +6,7 @@
 @font-face {
   font-family: 'JetBrains Mono';
   src: url('/qwerty/JetBrainsMono/fonts/webfonts/JetBrainsMono-Regular.woff2') format('woff2'),
-    url('/qwerty/JetBrainsMono/fonts/webfonts/JetBrainsMono-Regular.woff') format('woff');
+    url('/qwerty/JetBrainsMono/fonts/webfonts/JetBrainsMono-Bold.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
 }
